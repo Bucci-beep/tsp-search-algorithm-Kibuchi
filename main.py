@@ -1,4 +1,5 @@
 from src.utils import load_cities, create_distance_matrix
+from algorithms.tsp_core import create_initial_tour, tour_length, is_valid_tour
 
 def main():
     # Load dataset
@@ -9,11 +10,24 @@ def main():
     print("Loaded:", cities_df.shape)
     print(cities_df.head())
 
+    # create distance matrix
     dist_matrix = create_distance_matrix(cities_df)
     print("Distance matrix shape:", dist_matrix.shape)
 
-    # Preview few distances
-    print(dist_matrix[:5, :5])
+    #create an initial tour
+    number_of_cities = len(cities_df)
+    initial_tour = create_initial_tour(number_of_cities, method="random")
+
+    print(initial_tour)
+
+    # validate the tour
+    valid = is_valid_tour(initial_tour, number_of_cities)
+    print(f"\nIs the tour valid? {valid}")
+
+    # compute tour length
+    initial_cost = tour_length(initial_tour, dist_matrix)
+    print(f"Initial tour length: {initial_cost:.4f}")
+
 
 if __name__ == "__main__":
     main()
