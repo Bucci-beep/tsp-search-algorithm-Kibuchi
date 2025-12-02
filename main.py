@@ -1,6 +1,7 @@
 from src.utils import load_cities, create_distance_matrix
 from algorithms.tsp_core import create_initial_tour, tour_length, is_valid_tour
 from algorithms.neighbourhood import generate_all_swap_neighbours, generate_random_swap_neighbour
+from algorithms.hill_climbing import simple_hill_climbing
 
 
 def main():
@@ -37,6 +38,15 @@ def main():
     print("\nExample neighbours (first 3):")
     for nb in neighbours[:3]:
         print(nb)
+
+    # 7. Run simple hill climbing
+    print("\n Running Simple Hill Climbing...")
+    best_tour, best_cost, history = simple_hill_climbing(initial_tour, dist_matrix)
+
+    print("\nHill Climbing Results:")
+    print("Final best cost:", best_cost)
+    print("Best tour (first 20 cities):", best_tour[:20])
+    print("Total improvements recorded:", len(history))
 
 
 if __name__ == "__main__":
