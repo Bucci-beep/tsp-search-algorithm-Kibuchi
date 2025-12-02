@@ -2,6 +2,8 @@ from src.utils import load_cities, create_distance_matrix
 from algorithms.tsp_core import create_initial_tour, tour_length, is_valid_tour
 from algorithms.neighbourhood import generate_all_swap_neighbours, generate_random_swap_neighbour
 from algorithms.hill_climbing import simple_hill_climbing
+from algorithms.tabu_search import tabu_search
+
 
 
 def main():
@@ -47,6 +49,20 @@ def main():
     print("Final best cost:", best_cost)
     print("Best tour (first 20 cities):", best_tour[:20])
     print("Total improvements recorded:", len(history))
+
+    # 8. Run Tabu Search
+    print("\nRunning Tabu Search...")
+    tabu_tour, tabu_cost, tabu_history = tabu_search(
+        initial_tour,
+        dist_matrix,
+        tabu_tenure=10,
+        max_iterations=200
+    )
+
+    print("\nTabu Search Results:")
+    print("Best Tabu cost:", tabu_cost)
+    print("Best tour sample:", tabu_tour[:20])
+    print("Iterations recorded:", len(tabu_history))
 
 
 if __name__ == "__main__":
