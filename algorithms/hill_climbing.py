@@ -42,7 +42,7 @@ def simple_hill_climbing(
     for iteration in range(max_iterations):
 
         # Generate all neighbours via swap
-        neighbours = generate_all_swap_neighbours(current_tour)
+        neighbours = generate_all_swap_neighbours(current_tour)[:200]
 
         # Evaluate neighbours — find the best one
         best_nb = None

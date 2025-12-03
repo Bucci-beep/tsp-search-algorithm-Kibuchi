@@ -1,9 +1,9 @@
+import matplotlib.pyplot as plt
 from src.utils import load_cities, create_distance_matrix
 from algorithms.tsp_core import create_initial_tour, tour_length, is_valid_tour
 from algorithms.neighbourhood import generate_all_swap_neighbours, generate_random_swap_neighbour
 from algorithms.hill_climbing import simple_hill_climbing
 from algorithms.tabu_search import tabu_search
-
 
 
 def main():
@@ -45,6 +45,16 @@ def main():
     print("\n Running Simple Hill Climbing...")
     best_tour, best_cost, history = simple_hill_climbing(initial_tour, dist_matrix)
 
+    # Plot Hill Climbing progress
+    plt.figure(figsize=(8, 4))
+    plt.plot(history, label="Hill Climbing Cost")
+    plt.xlabel("Iteration")
+    plt.ylabel("Tour Cost")
+    plt.title("Hill Climbing Improvement Over Time")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
     print("\nHill Climbing Results:")
     print("Final best cost:", best_cost)
     print("Best tour (first 20 cities):", best_tour[:20])
@@ -58,6 +68,27 @@ def main():
         tabu_tenure=10,
         max_iterations=200
     )
+
+    # Plot Tabu Search progress
+    plt.figure(figsize=(8, 4))
+    plt.plot(tabu_history, label="Tabu Search Cost", color='orange')
+    plt.xlabel("Iteration")
+    plt.ylabel("Tour Cost")
+    plt.title("Tabu Search Improvement Over Time")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+    # Comparison plot: Hill Climbing vs Tabu Search
+    plt.figure(figsize=(8, 4))
+    plt.plot(history, label="Hill Climbing")
+    plt.plot(tabu_history, label="Tabu Search")
+    plt.xlabel("Iteration")
+    plt.ylabel("Tour Cost")
+    plt.title("HC vs Tabu Search — Cost Comparison")
+    plt.grid(True)
+    plt.legend()
+    plt.show()
 
     print("\nTabu Search Results:")
     print("Best Tabu cost:", tabu_cost)
