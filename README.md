@@ -86,6 +86,10 @@ tsp-search-algorithm-Kibuchi/
 ├── src/ # Supporting utilities
 └── docs/ # Report and supporting documents
 
+## Report
+
+The final project report is available in the `docs/` directory.
+The report PDF includes the project title, author name, and student ID, as required for submission.
 
 ---
 
