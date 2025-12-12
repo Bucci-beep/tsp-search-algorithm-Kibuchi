@@ -77,7 +77,7 @@ Key experimental comparisons:
 ## Repository Structure
 tsp-search-algorithm-Kibuchi/
 │
-├── tsp-search-algorithm-Kibuchi.ipynb # Main notebook (implementation + results)
+├── tsp_search_algorithm_Kibuchi.ipynb   # Main notebook (implementation + results)
 ├── README.md # Project overview
 ├── requirements.txt # Python dependencies
 │
@@ -97,14 +97,14 @@ The report PDF includes the project title, author name, and student ID, as requi
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/tsp-search-algorithm-Kibuchi.git
-cd tsp-search-algorithm-Kibuchi
+git clone https://github.com/your-username/tsp_search_algorithm_Kibuchi.git
+cd tsp_search_algorithm_Kibuchi
 
 2. Install dependencies:
 pip install -r requirements.txt
 
 3. Open notebook:
-jupyter notebook tsp-search-algorithm-Kibuchi.ipynb
+jupyter notebook tsp_search_algorithm_Kibuchi.ipynb
 
 4. Run cells top to bottom to reproduce all results and figures.
 
